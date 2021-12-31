@@ -1,14 +1,15 @@
 <template>
   <div v-if="item">
     <el-form-item :label="item.title" >
-      <el-input type="textarea" v-model="value" :placeholder="item.prompt_msg" @change="onChangeFirstValue"></el-input>
+      <el-input-number clearable v-model="value" :step="item.step||1"  @change="onChangeFirstValue"></el-input-number>
+<!--      <el-input-number v-model="num" :step="2"></el-input-number>-->
     </el-form-item>
   </div>
 </template>
 
 <script>
 export default {
-  name: "el_textarea",
+  name: "self_inputNumber",
   props:{
     item:{}
   },

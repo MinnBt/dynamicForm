@@ -31,12 +31,12 @@ export default {
     }
   },
   methods:{
-    onChangeFirstValue(){
-
+    onChangeFirstValue(val){
+      this.$emit('changeComponent',{id:this.item.id,val:val})
     }
   },
   mounted() {
-    console.log(this.item.isRules);
+
   }
 }
 </script>

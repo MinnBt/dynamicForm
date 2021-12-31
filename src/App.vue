@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <lm-dynamic-form :form="form"></lm-dynamic-form>
+    <lm-dynamic-form :form="form" @getCommom="changegetCommom" @changBtns="changBtns"></lm-dynamic-form>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
           'lableWidth':120,
           "size":'small',
           "labelPosition":'right',
+          "buttons":[{text:'保存',type:'primary'},{text:'取消',type:''}]
         },
         "freedomConfig": [{
           "id": 10,
@@ -105,10 +106,44 @@ export default {
             "val": null,
             "rank": 0
           },
+          {
+            "id": 16,
+            "isRules":true,
+            "name": "check_type",
+            "type": "el_inputNumber",
+            "title": "计数器",
+            "prompt_msg": "请填写审核类型",
+            "selectObj": [],
+            "val": null,
+            "step": 1,
+            "rank": 0
+          },
+          {
+            "id": 17,
+            "isRules":true,
+            "name": "check_type",
+            "type": "el_time_picker",
+            "title": "时间",
+            "prompt_msg": "请填写审核类型",
+            "selectObj": [],
+            "val": null,
+            "step": 1,
+            "rank": 0
+          },
           ]
       },
 
 
+    }
+  },
+  methods:{
+    changegetCommom(val){
+     let findData = this.form.freedomConfig.find(item=> item.id==val.id)
+      findData.val=val.val
+      console.log(findData);
+    },
+    changBtns(v){
+      console.log(v);
     }
   }
 }
@@ -116,6 +151,6 @@ export default {
 
 <style lang="scss">
  #app{
-   width: 80%;
+   width: 40%;
  }
 </style>

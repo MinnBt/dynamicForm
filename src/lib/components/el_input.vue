@@ -1,7 +1,7 @@
 <template>
   <div v-if="item">
     <el-form-item :label="item.title" >
-          <el-input clearable v-model="value" :placeholder="item.prompt_msg"></el-input>
+          <el-input clearable v-model="value" :placeholder="item.prompt_msg"   @change="onChangeFirstValue"></el-input>
     </el-form-item>
   </div>
 </template>
@@ -18,8 +18,8 @@ export default {
     }
   },
   methods:{
-    onChangeFirstValue(){
-
+    onChangeFirstValue(val){
+      this.$emit('changeComponent',{id:this.item.id,val:val})
     }
   }
 }

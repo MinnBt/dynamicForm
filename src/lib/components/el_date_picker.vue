@@ -3,6 +3,7 @@
     <el-form-item :label="item.title" >
       <el-date-picker
         type="date"
+        @change="onChangeFirstValue"
         :placeholder="item.prompt_msg"
         v-model="value"
         format="yyyy-MM-dd"
@@ -25,8 +26,8 @@ export default {
     }
   },
   methods:{
-    onChangeFirstValue(){
-
+    onChangeFirstValue(val){
+      this.$emit('changeComponent',{id:this.item.id,val:val})
     }
   }
 }

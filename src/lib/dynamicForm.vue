@@ -14,6 +14,11 @@
           :number="number"
           @changeComponent="changeComponentHandle"
         ></component>
+
+      <el-form-item>
+        <el-button v-for="(item,index) in form.formConfig.buttons" :key="index" :type="item.type" @click="changeButs(item)">{{item.text}}</el-button>
+      </el-form-item>
+
     </el-form>
   </div>
 </template>
@@ -30,8 +35,12 @@ export default {
   },
   methods:{
     changeComponentHandle(val){
-      console.log(val);
+      this.$emit('getCommom',val)
+    },
+    changeButs(val){
+     this.$emit('changBtns',val);
     }
+    //
   }
 }
 </script>
